@@ -11,6 +11,7 @@ mkdir -p "${MC_DATA_DIR}"
 xhost +"local:podman@"
 
 docker run --rm -it \
+	--pull always \
 	-e DISPLAY \
 	--security-opt=label=type:container_runtime_t \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \

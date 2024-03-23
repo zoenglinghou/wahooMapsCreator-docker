@@ -9,6 +9,7 @@ MC_DATA_DIR="${DATA_DIR:-$PWD/data/wahooMapsCreatorData}"
 mkdir -p "${MC_DATA_DIR}"
 
 docker run --rm -it \
+	--pull always \
 	-v "${MC_DATA_DIR}:/root/wahooMapsCreatorData:Z" \
 	-v "${PWD}:/app:Z" \
 	ghcr.io/zoenglinghou/wahoo-maps-creator:master \
