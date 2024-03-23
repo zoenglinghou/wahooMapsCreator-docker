@@ -8,8 +8,13 @@ MC_DATA_DIR="${DATA_DIR:-$PWD/data/wahooMapsCreatorData}"
 
 mkdir -p "${MC_DATA_DIR}"
 
+xhost +"local:podman@"
+
 docker run --rm -it \
+	-e DISPLAY \
+	--security-opt=label=type:container_runtime_t \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v "${MC_DATA_DIR}:/root/wahooMapsCreatorData:Z" \
 	-v "${PWD}:/app:Z" \
 	ghcr.io/zoenglinghou/wahoo-maps-creator:master \
-	"cli" "${ARGS[@]}"
+	"gui" "${ARGS[@]}"

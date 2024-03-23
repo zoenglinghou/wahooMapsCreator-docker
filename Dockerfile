@@ -31,4 +31,4 @@ RUN mkdir -p /app
 WORKDIR "/app"
 RUN python3 -c "from wahoomc import main; main.run('init')"
 
-ENTRYPOINT ["python3", "-m", "wahoomc", "cli"]
+ENTRYPOINT ["python3", "-m", "wahoomc"]
